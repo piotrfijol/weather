@@ -2,9 +2,13 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
+  --color-secondary-idle: #D9E4FF4C;
+  --color-secondary-focus: #D9E4FF;
 }
 
 body {
+  background-color: rgb(33, 37, 41);
   margin: 0;
   display: flex;
   place-items: center;
