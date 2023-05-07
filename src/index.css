@@ -2,9 +2,6 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  --color-secondary-idle: #D9E4FF4C;
-  --color-secondary-focus: #D9E4FF;
 }
 
 body {
@@ -15,3 +12,11 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+
+.sr-only {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
