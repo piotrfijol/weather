@@ -21,9 +21,10 @@ export const SearchInput = ({ onChange, value } : SearchInputProps) => {
         onInput={onChange} 
         value={value}
       />
-      <div className="navigate">
+      <button className="navigate" type="button">
         <NavigationIcon />
-      </div>
+        <span className="sr-only">Click to find your location</span>
+      </button>
     </div>
   )
 }

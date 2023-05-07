@@ -19,11 +19,13 @@
     }
 
     .navigate {
-        height: 100%;
-        fill: var(--color-secondary-idle);
         position: absolute;
         left: .75rem;
-        top: 20%;
+        top: 27%;
+        background: none;
+        border: none;
+        fill: var(--color-secondary-idle);
+        padding: 0;
     }
 
     .navigate:hover {
