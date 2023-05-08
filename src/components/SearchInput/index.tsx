@@ -21,6 +21,17 @@ export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) 
     }
   };
 
+  useEffect(() => {
+    let timeoutID: NodeJS.Timeout;
+    if(error !== "")
+      timeoutID = setTimeout(() => {setError("")}, 3000);
+  
+    return () => {
+      if(timeoutID)
+        clearTimeout(timeoutID);
+    }
+  }, [error]);
+
   return (
     <div className="search-container">
       {error !== ""? (
