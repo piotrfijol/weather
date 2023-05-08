@@ -4,10 +4,19 @@ import "./SearchInput.scss";
 
 interface SearchInputProps {
   onChange: (ev: KeyboardEvent<HTMLInputElement>) => void,
+  onLocation: (position : GeolocationPosition) => void,
   value: string
 }
 
-export const SearchInput = ({ onChange, value } : SearchInputProps) => {
+export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) => {
+
+  const getLocation = () => {
+    if("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        onLocation(position);
+      });
+    }
+  };
 
   return (
     <div className="search-container">
@@ -15,16 +24,16 @@ export const SearchInput = ({ onChange, value } : SearchInputProps) => {
       <input 
         placeholder="London"
         autoComplete="none"
-        type="search" 
-        name="city-name" 
-        id="search-city" 
+        type="search"
+        name="city-name"
+        id="search-city"
         onInput={onChange} 
         value={value}
       />
-      <button className="navigate" type="button">
+      <button className="navigate" type="button" onClick={getLocation}>
         <NavigationIcon />
         <span className="sr-only">Click to find your location</span>
       </button>
-    </div>
+  </div>
   )
 }
