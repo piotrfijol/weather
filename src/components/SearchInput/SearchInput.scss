@@ -42,4 +42,64 @@
         cursor: pointer;
         fill: var(--color-secondary-focus);
     }
+
+    .error {
+        --alert-color: rgb(207, 38, 38);
+        width: 1.25rem;
+        height: 1.25rem;
+        background: var(--alert-color);
+        border-radius: 0.4rem;
+        position: absolute;
+        left: -2rem;
+        top: .35rem;
+    
+        &__cross-mark {
+            width: 0.95rem;
+            height: 0.95rem;
+            position: relative;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        &__cross-mark::before, &__cross-mark::after {
+            content: '';
+            height: 75%;
+            width: 0.1875rem;
+            background-color: #FFF;
+            border-radius: .6rem;
+            display: block;
+            transform-origin: bottom;
+        }
+    
+        &__cross-mark::before {
+            transform: rotate(45deg) translateY(0.19rem) translateX(-.05rem);
+        }
+    
+        &__cross-mark::after {
+            transform: rotate(-45deg) translateY(0.19rem) translateX(.05rem);
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:hover .error__message {
+            width: auto;
+            width: min(10rem, 75vw);
+            height: auto;
+            margin-top: 2px;
+            padding: .2rem .7rem;
+            border-radius: 0.4rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            z-index: 1;
+            background-color: var(--alert-color);
+            color: #FFF;
+        }
+    }
+    
 }
+
