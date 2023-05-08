@@ -10,7 +10,7 @@ function App() {
   };
 
   return (
-    <>
+    <div className="container">
       <form>
         <SearchInput 
           onChange={(e) => {
@@ -20,7 +20,7 @@ function App() {
           value={search} 
         />
       </form>
-    </>
+    </div>
   )
 }
 
