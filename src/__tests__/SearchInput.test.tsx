@@ -77,3 +77,17 @@ describe("Search input", () => {
 
     });
 });
+
+describe("SearchInput's error alert", () => {
+    it("renders when browser doesnt support geolocation api", () => {
+
+        // Make sure geolocation is not in the navigator object
+        (global as any).navigator = {};
+        const mock = vi.fn();
+        const wrapper = render(<SearchInput onChange={() => {}} value="" onLocation={mock}/>);
+        const navButton = wrapper.getByRole("button");
+
+        fireEvent.click(navButton);
+        expect(document.querySelector('.error__message')).not.toBeNull();
+    });
+});

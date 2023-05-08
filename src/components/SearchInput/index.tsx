@@ -1,4 +1,4 @@
-import { KeyboardEvent } from "react";
+import { KeyboardEvent, useState, useEffect } from "react";
 import { NavigationIcon } from "../icons/NavigationIcon";
 import "./SearchInput.scss";
 
@@ -9,17 +9,28 @@ interface SearchInputProps {
 }
 
 export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) => {
+  const [error, setError] = useState("");
 
   const getLocation = () => {
     if("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         onLocation(position);
       });
+    } else {
+      setError("Geolocation API is either not supported by your browser or it is disabled.")
     }
   };
 
   return (
     <div className="search-container">
+      {error !== ""? (
+        <div className="error">
+          <p role="alert" aria-live="assertive" className="error__message sr-only">{error}</p>
+          <div className="error__cross-mark" aria-hidden="true"></div>
+        </div>)
+        : null
+      }
+
       <label className="sr-only" htmlFor="search-city">Enter the name of the city</label>
       <input 
         placeholder="London"
