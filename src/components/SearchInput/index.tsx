@@ -1,9 +1,9 @@
-import { KeyboardEvent, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { NavigationIcon } from "../icons/NavigationIcon";
 import "./SearchInput.scss";
 
 interface SearchInputProps {
-  onChange: (ev: KeyboardEvent<HTMLInputElement>) => void,
+  onChange: (ev: React.ChangeEvent<HTMLInputElement>) => void,
   onLocation: (position : GeolocationPosition) => void,
   value: string
 }
