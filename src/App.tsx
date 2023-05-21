@@ -1,25 +1,33 @@
-import { useState } from 'react'
-import { SearchInput } from './components/SearchInput'
-import './App.css'
+import { useState } from "react";
+import { CurrentDayWeather } from './components/CurrentDayWeather';
+import { Searchbar } from './components/Searchbar';
+import { TemperatureToggle } from './components/TemperatureToggle';
+import { TemperatureSymbols, TemperatureUnits, TemperatureUnitsInfo } from "./types/temperature";
+import { TemperatureProvider, defaultTempUnitsInfo } from "./react-context/TemperatureContext";
+import './App.css';
 
 function App() {
-  const [search, setSearch] = useState('');
+  const [temperatureUnits, setTemperatureUnits] = useState<TemperatureUnitsInfo>(defaultTempUnitsInfo);
 
-  const getLocation = (position: GeolocationPosition) => {
-    setSearch(position.coords.longitude.toString());
-  };
+  const handleTempToggle = (unit: TemperatureUnits) => {
+    setTemperatureUnits((temperatureUnits) => {
+      let symbol: TemperatureSymbols;
+      if(unit === "fahrenheit")
+        symbol = "F";
+      else 
+        symbol = defaultTempUnitsInfo.symbol
+
+      return {...temperatureUnits, unit, symbol}
+    })
+  }
 
   return (
     <div className="container">
-      <form>
-        <SearchInput 
-          onChange={(e) => {
-            setSearch(e.currentTarget.value)
-          }}
-          onLocation={getLocation}
-          value={search} 
-        />
-      </form>
+        <Searchbar />
+        <TemperatureToggle selectedUnit={temperatureUnits.unit} onToggle={handleTempToggle}/>
+        <TemperatureProvider value={temperatureUnits}>
+          <CurrentDayWeather />
+        </TemperatureProvider>
     </div>
   )
 }
