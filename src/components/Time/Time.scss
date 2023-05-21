@@ -1,0 +1,9 @@
+.time {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+
+    &__main {
+        font-size: .8rem;
+    }
+}
