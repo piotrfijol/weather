@@ -1,0 +1,20 @@
+.temperature-toggle {
+    
+    form input[type="radio"] {
+        display: none;
+    }
+
+    form label {
+        font-size: 1.3rem;
+        margin: 0 .15em;
+    }
+
+    form label:hover {
+        cursor: pointer;
+    }
+
+    form input:checked + label {
+        font-weight: 800;
+        color: #FFF;
+    }
+}
