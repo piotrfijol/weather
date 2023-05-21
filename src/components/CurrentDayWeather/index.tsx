@@ -1,30 +1,25 @@
 import { InfoEntry } from "../InfoEntry";
 import { Time } from "../Time";
+import { Temperature } from "../Temperature";
 import HumidityIcon from "@assets/humidity.svg";
 import BarometerIcon from "@assets/barometer.svg";
-import { Temperature } from "../Temperature/Temperature";
-import { useState } from "react";
+import "./CurrentDayWeather.scss";
 
 export const CurrentDayWeather = () => {
-    const [temp, setTemp] = useState(24)
-
-    const handleTempUnitChange = (temperature: number) => {
-        setTemp(temperature);
-    }
 
     return (
-        <section>
-            <h2>City</h2>
-            <div className="timers">
-                <Time is="sunrise" at={1} />
-                <Time is="sunset" at={1} />
+        <section className="weather-main">
+            <h2 className="weather-main__city"><span className="country-code">[PL]</span> Kielce</h2>
+            <div className="weather-main__timers">
+                <Time is="sunrise" at={100000000} format={12}/>
+                <Time is="sunset" at={1} format={12}/>
             </div>
-            <div>
-                <div className="weather-infographic/illustration">
-                    <img src="" alt="" />
+            <div className="container">
+                <div className="weather-main__illustration">
+                    <img src="http://openweathermap.org/img/wn/04d@4x.png" alt="" />
                 </div>
-                <div className="weather-info">
-                    <Temperature onTemperatureToggle={handleTempUnitChange} temp={temp} />
+                <div className="weather-main__info">
+                    <Temperature temp={24} />
                     <InfoEntry icon={HumidityIcon} 
                         info={"42%"} alt="water drop with the percentage sign on it" />
                     <InfoEntry icon={BarometerIcon} info={"1024hPa"} alt="barometer"/>

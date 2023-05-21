@@ -1,0 +1,25 @@
+
+.weather-main {
+    &__city {
+        font-weight: 400;
+        font-size: 2.3rem;
+        line-height: 150%;
+        margin: 0;
+    }
+
+    .country-code {
+        font-size: 1rem;
+    }
+
+    &__timers {
+        margin: 0.19rem .675rem;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+    }
+
+}
