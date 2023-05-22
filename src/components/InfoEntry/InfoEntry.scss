@@ -1,8 +1,14 @@
 .info {
+    display: flex;
+    align-items: center;
     margin-top: .25rem;
 
-    &__icon {
+    &__icon, & > img {
         margin-right: .6rem;
     }
 
+}
+
+.info:first-child {
+    margin-top: 0;
 }

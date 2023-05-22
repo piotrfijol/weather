@@ -1,7 +1,7 @@
 import "./InfoEntry.scss";
 
 interface InfoEntryProps {
-    icon: string,
+    icon: string | React.ReactNode,
     info: string,
     alt: string
 }
@@ -9,7 +9,10 @@ interface InfoEntryProps {
 export const InfoEntry = ({icon, info, alt}: InfoEntryProps) => {
   return (
     <div className="info">
-      <img className="info__icon" src={icon} alt={alt} /> 
+      {typeof icon === "string" 
+        ? <img className="info__icon" src={icon} alt={alt} /> 
+        : icon
+      }
       <span className="info__label">{info}</span>
     </div>
   )
