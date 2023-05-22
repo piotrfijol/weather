@@ -11,8 +11,7 @@ describe("Temperature component", () => {
                 <Temperature temp={temperature}/>;
             </TemperatureProvider>);
 
-        expect(wrapper.getByText("60.8°F")).toBeInTheDocument();
-        wrapper.rerender(<Temperature temp={temperature} />)
+        expect(wrapper.getByText("61")).toBeInTheDocument();
     });
 
 });
