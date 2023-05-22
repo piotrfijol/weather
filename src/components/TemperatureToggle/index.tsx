@@ -19,6 +19,7 @@ export const TemperatureToggle = ({selectedUnit = "celsius", onToggle}: Temperat
     <div className="temperature-toggle">
       <form>
         <TempUnitControl unit="celsius" symbol="C" checked={selectedUnit === "celsius"} onChange={handleChange}/>
+        <div className="temperature-toggle__delimiter" />
         <TempUnitControl unit="fahrenheit" symbol="F" checked={selectedUnit === "fahrenheit"} onChange={handleChange}/>
       </form>
     </div>

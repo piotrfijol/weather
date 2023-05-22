@@ -1,5 +1,16 @@
 .temperature-toggle {
-    
+    text-align: center;
+    color: var(--text-1);
+    font-weight: 400;
+
+    &__delimiter {
+        height: 1rem;
+        width: 1px;
+        margin: 0 .8rem;
+        background-color: #FFF;
+        display: inline-block;
+    }
+
     form input[type="radio"] {
         display: none;
     }
@@ -15,6 +26,5 @@
 
     form input:checked + label {
         font-weight: 800;
-        color: #FFF;
     }
 }
