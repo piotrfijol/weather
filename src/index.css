@@ -6,14 +6,19 @@
   --color-secondary-focus: #D9E4FF;
   --color-accent: #2555FF;
   --text-1: #EFEFEF;
-  --background-gradient-1: #004E7A;
-  --background-gradient-2: #0085D0;
-  --background-gradient-3: #86D4FF;
+  --background-gradient-1: #130b24;
+  --background-gradient-2: #1c0d54;
+  --background-gradient-3: #1c1c6f;
   color: #FFF;
 }
 
 body {
-  background-color: rgb(33, 37, 41);
+  background: linear-gradient(170deg, 
+    var(--background-gradient-1) 0%,
+    var(--background-gradient-2) 30%,
+    var(--background-gradient-2) 60%,
+    var(--background-gradient-3) 100%
+  );
   margin: 0;
   min-height: 100vh;
 }
