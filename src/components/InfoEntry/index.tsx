@@ -1,3 +1,5 @@
+import "./InfoEntry.scss";
+
 interface InfoEntryProps {
     icon: string,
     info: string,
@@ -6,9 +8,9 @@ interface InfoEntryProps {
 
 export const InfoEntry = ({icon, info, alt}: InfoEntryProps) => {
   return (
-    <div>
-      <img src={icon} alt={alt} /> 
-      <span>{info}</span>
+    <div className="info">
+      <img className="info__icon" src={icon} alt={alt} /> 
+      <span className="info__label">{info}</span>
     </div>
   )
 }
