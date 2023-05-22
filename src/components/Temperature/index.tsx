@@ -4,10 +4,11 @@ import { toFahrenheit } from "../../utils/tempConverters";
 import "./Temperature.scss";
 
 interface TemperatureProps {
-    temp: number
+    temp: number,
+    className?: string
 }
 
-export const Temperature = ({temp = 0}: TemperatureProps) => {
+export const Temperature = ({temp = 0, className=""}: TemperatureProps) => {
   const {unit, defaultUnit, symbol} = useTempUnit();
   const [temperature, setTemperature] = useState<number>(0);
 
@@ -16,15 +17,15 @@ export const Temperature = ({temp = 0}: TemperatureProps) => {
       if(defaultUnit === unit) {
         setTemperature(temp);
       } else if(unit === "fahrenheit") {
-        setTemperature(toFahrenheit(temp)); 
+        setTemperature(Math.round(toFahrenheit(temp))); 
       }
 
     }, [unit])
     
 
   return (
-    <div className="temperature">
-      <span className="temperature__value">{temperature}°{symbol}</span>
+    <div className={`temperature ${className}`}>
+      <span className="temperature__value">{temperature}<sup className="temperature__symbol">°{symbol}</sup></span>
     </div>
   )
 }
