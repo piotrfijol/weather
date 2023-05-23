@@ -12,15 +12,24 @@ interface TimeProps {
 
 export const Time = ({is, at, format}: TimeProps) => {
 
+  
   const formatTime = () => {
     let d = new Date(at);
     return d.toLocaleString("en-US", {minute: "numeric", hour: "numeric", hour12: (format === 12)})
   }; 
-
-    return (
+  
+  let time = formatTime();
+  
+  return (
         <div className="time">
-          <img className="time__icon" src={is === "sunrise" ? SunriseIcon : is === "sunset" ? SunsetIcon : ""} />
-          <span className="time__main">{formatTime()}</span>
+          {
+            is === "sunrise" 
+              ? <img className="time__icon" src={SunriseIcon} alt="sunrise" />
+              : is === "sunset" 
+                ? <img className="time__icon" src={SunsetIcon} alt="sunset" />
+                : null
+          }
+          <time dateTime={time} className="time__main">{time}</time>
         </div>
       );
 }
