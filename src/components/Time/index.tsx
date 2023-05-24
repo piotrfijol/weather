@@ -15,8 +15,6 @@ export const Time = ({is, at, format}: TimeProps) => {
   
   const formatTime = () => {
     let d = new Date(at * 1000);
-    console.log(d);
-    console.log(d.getHours(), d.getMinutes())
     return d.toLocaleString("en-US", {minute: "numeric", hour: "numeric", hour12: (format === 12)})
   }; 
   
