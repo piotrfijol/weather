@@ -2,6 +2,7 @@ import { InfoEntry } from "../InfoEntry";
 import { Time } from "../Time";
 import { Temperature } from "../Temperature";
 import { useQuery } from "@tanstack/react-query";
+import { SearchLocation } from "../../types/location";
 import HumidityIcon from "@assets/humidity.svg";
 import BarometerIcon from "@assets/barometer.svg";
 import SpeedometerIcon from "@assets/Speedometer.svg";
@@ -9,17 +10,33 @@ import DirectionIcon from "@assets/direction.svg";
 import WindIcon from "@assets/wind.svg";
 import "./CurrentDayWeather.scss";
 
-const fetchTodayWeather = async () => {
-    const response = await fetch("https://weatherapp-server.melaryk.repl.co/api/weather?q=Kielce");
-    if(!response.ok) {
+const fetchTodayWeather = async (location: SearchLocation) => {
+    let response;
+    let url = new URL("https://weatherapp-server.melaryk.repl.co/api/weather");
+    if(typeof location === "string") {
+        url.searchParams.set("q", location);
+    } else if (location instanceof GeolocationPosition) {
+        url.searchParams.set("lon", location.coords.longitude.toString());
+        url.searchParams.set("lat", location.coords.latitude.toString());
+    } else {
+        throw new Error("Unsupported location type.");
+    }
+
+    response = await fetch(url);
+
+    if(!response?.ok) {
         throw new Error("There was a network problem when requesting weather data.");
     }
 
     return await response.json();
 };
 
-export const CurrentDayWeather = () => {
-    const {isLoading, isError, error, data} = useQuery({queryKey: ['current-day'], queryFn: fetchTodayWeather})
+interface CurrentDayWeatherProps {
+    location: SearchLocation
+}
+
+export const CurrentDayWeather = ({ location }: CurrentDayWeatherProps) => {
+    const {isLoading, isError, error, data} = useQuery({queryKey: ['current-day', location], queryFn: () => fetchTodayWeather(location)})
 
     if(isLoading) {
         return <span>Loading</span>
