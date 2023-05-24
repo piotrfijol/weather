@@ -15,7 +15,7 @@ export const Temperature = ({temp = 0, className=""}: TemperatureProps) => {
 
     useEffect(() => {
       if(defaultUnit === unit) {
-        setTemperature(temp);
+        setTemperature(Math.round(temp));
       } else if(unit === "fahrenheit") {
         setTemperature(Math.round(toFahrenheit(temp))); 
       }
