@@ -25,7 +25,7 @@ export const Temperature = ({temp = 0, className=""}: TemperatureProps) => {
 
   return (
     <div className={`temperature ${className}`}>
-      <span className="temperature__value">{temperature}<sup className="temperature__symbol">°{symbol}</sup></span>
+      <span className="temperature__value">{temperature}<sup className="temperature__symbol">&deg;{symbol}</sup></span>
     </div>
   )
 }
