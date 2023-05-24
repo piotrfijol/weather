@@ -9,21 +9,21 @@ import "./CurrentDayWeather.scss";
 export const CurrentDayWeather = () => {
 
     return (
-        <section className="weather-main">
+        <section className="today wrapper">
             <div className="wrapper">
-                <div className="weather-main__general">
-                    <h2 className="weather-main__city"><span className="country-code">[PL]</span> Kielce</h2>
-                    <div className="weather-main__timers">
+                <div className="today__general">
+                    <h2 className="today__city"><span className="country-code">[PL]</span> Kielce</h2>
+                    <div className="today__timers">
                         <Time is="sunrise" at={100000000} format={24}/>
                         <Time is="sunset" at={1} format={24}/>
                     </div>
-                    <div className="container">
-                        <div className="weather-main__illustration">
-                            <img src="http://openweathermap.org/img/wn/04d@4x.png" alt="" />
+                    <div className="today__main">
+                        <div className="today__illustration">
+                            <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="" />
                         </div>
-                        <div className="weather-main__info">
-                            <Temperature temp={16} className="weather-main__temperature"/>
-                            <div className="container">
+                        <div className="today__info-container">
+                            <Temperature temp={16} className="today__temperature"/>
+                            <div className="today__info">
                                 <InfoEntry icon={HumidityIcon} 
                                     info={"42%"} alt="water drop with the percentage sign on it" />
                                 <InfoEntry icon={BarometerIcon} info={"1024hPa"} alt="barometer"/>
