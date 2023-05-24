@@ -52,9 +52,8 @@ export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) 
         onInput={onChange} 
         value={value}
       />
-      <button className="navigate" type="button" onClick={getLocation}>
+      <button className="navigate" type="button" onClick={getLocation} title="Click to check weather for your location">
         <NavigationIcon />
-        <span className="sr-only">Click to find your location</span>
       </button>
   </div>
   )
