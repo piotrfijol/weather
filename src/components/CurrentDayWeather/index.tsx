@@ -14,7 +14,10 @@ export const CurrentDayWeather = () => {
         <section className="today wrapper">
             <div className="wrapper">
                 <div className="today__general">
-                    <h2 className="today__city"><span className="country-code">[PL]</span> Kielce</h2>
+                    <div className="today__location">
+                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/PL.svg" className="today__country" alt="PL flag" /> 
+                        <h2 className="today__city">Kielce</h2>
+                    </div>
                     <div className="today__timers">
                         <Time is="sunrise" at={100000000} format={24}/>
                         <Time is="sunset" at={1} format={24}/>
