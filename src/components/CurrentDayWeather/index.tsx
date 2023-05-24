@@ -34,23 +34,23 @@ export const CurrentDayWeather = () => {
             <div className="wrapper">
                 <div className="today__general">
                     <div className="today__location">
-                        <img src="http://purecatamphetamine.github.io/country-flag-icons/3x2/PL.svg" className="today__country" alt="PL flag" /> 
-                        <h2 className="today__city">Kielce</h2>
+                        <img src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${data.sys.country}.svg`} className="today__country" alt="PL flag" /> 
+                        <h2 className="today__city">{data.name}</h2>
                     </div>
                     <div className="today__timers">
-                        <Time is="sunrise" at={100000000} format={24}/>
-                        <Time is="sunset" at={1} format={24}/>
+                        <Time is="sunrise" at={data.sys.sunrise} format={24}/>
+                        <Time is="sunset" at={data.sys.sunset} format={24}/>
                     </div>
                     <div className="today__main">
                         <div className="today__illustration">
-                            <img src="https://openweathermap.org/img/wn/10d@4x.png" alt="" />
+                            <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`} alt={data.weather[0].description} />
                         </div>
                         <div className="today__info-container">
-                            <Temperature temp={16} className="today__temperature"/>
+                            <Temperature temp={data.main.temp} className="today__temperature"/>
                             <div className="today__info">
                                 <InfoEntry icon={HumidityIcon} 
-                                    info={"42%"} alt="humidity" />
-                                <InfoEntry icon={BarometerIcon} info={"1024hPa"} alt="atmospheric pressure"/>
+                                    info={data.main.humidity + "%"} alt="humidity" />
+                                <InfoEntry icon={BarometerIcon} info={data.main.pressure + "hPa"} alt="atmospheric pressure"/>
                             </div>
                         </div>
                     </div>
@@ -61,11 +61,11 @@ export const CurrentDayWeather = () => {
                     </div>
                     <div className="wind__data">
                         <InfoEntry 
-                            icon={<img src={DirectionIcon} alt="direction" style={{transform: `rotate(${44}deg)`}}/>} 
+                            icon={<img src={DirectionIcon} alt="direction" style={{transform: `rotate(${data.wind.deg}deg)`}}/>} 
                             alt="direction" 
                             info={"North West"}
                         />
-                        <InfoEntry icon={SpeedometerIcon} alt="speed" info={"52 km/h"}/>
+                        <InfoEntry icon={SpeedometerIcon} alt="speed" info={data.wind.speed + " km/h"}/>
                     </div>
                 </section>
             </div>
