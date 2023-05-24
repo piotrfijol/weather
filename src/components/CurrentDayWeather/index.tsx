@@ -1,6 +1,7 @@
 import { InfoEntry } from "../InfoEntry";
 import { Time } from "../Time";
 import { Temperature } from "../Temperature";
+import { useQuery } from "@tanstack/react-query";
 import HumidityIcon from "@assets/humidity.svg";
 import BarometerIcon from "@assets/barometer.svg";
 import SpeedometerIcon from "@assets/Speedometer.svg";
@@ -8,7 +9,25 @@ import DirectionIcon from "@assets/direction.svg";
 import WindIcon from "@assets/wind.svg";
 import "./CurrentDayWeather.scss";
 
+const fetchTodayWeather = async () => {
+    const response = await fetch("https://weatherapp-server.melaryk.repl.co/api/weather?q=Kielce");
+    if(!response.ok) {
+        throw new Error("There was a network problem when requesting weather data.");
+    }
+
+    return await response.json();
+};
+
 export const CurrentDayWeather = () => {
+    const {isLoading, isError, error, data} = useQuery({queryKey: ['current-day'], queryFn: fetchTodayWeather})
+
+    if(isLoading) {
+        return <span>Loading</span>
+    }
+
+    if(isError && error) {
+        <span>{error.message}</span>
+    }
 
     return (
         <section className="today wrapper">
