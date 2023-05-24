@@ -2,7 +2,8 @@
 .today {
     padding: 1rem;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     max-width: 1200px;
     margin: auto;
 
@@ -11,7 +12,7 @@
         flex-direction: row;
         align-items: center;
         gap: 1rem;
-        padding: 2rem 0 1rem 0;
+        padding-top: 2rem;
     }
     
     &__city {
@@ -25,22 +26,14 @@
     &__country {
         width: 1rem;
     }
-
-    .wrapper {
-        margin: auto;
+    &__general {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        row-gap: 2rem;
-    }
-
-    &__general {
-        max-width: 25rem;
-        flex: 1;
+        gap: 4rem;
     }
 
     &__timers {
-        margin: 0.19rem .675rem;
+        margin: 0 0 2rem .675rem ;
         display: flex;
         gap: 1rem;
         justify-content: center;
@@ -133,7 +126,13 @@
 @media (min-width: 1200px) {
 
     .today {
+        
         .wrapper {
+            align-self: flex-start;
+            margin-left: 12%;
+        }
+
+        &__general {
             flex-direction: row;
             column-gap: 4.5rem;
         }

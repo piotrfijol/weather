@@ -9,6 +9,7 @@ import SpeedometerIcon from "@assets/Speedometer.svg";
 import DirectionIcon from "@assets/direction.svg";
 import WindIcon from "@assets/wind.svg";
 import "./CurrentDayWeather.scss";
+import { truncate } from "../../utils/helper";
 
 const fetchTodayWeather = async (location: SearchLocation) => {
     let response;
@@ -47,28 +48,29 @@ export const CurrentDayWeather = ({ location }: CurrentDayWeatherProps) => {
     }
 
     return (
-        <section className="today wrapper">
+        <section className="today">
             <div className="wrapper">
-                <div className="today__general">
-                    <div className="today__location">
-                        <img src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${data.sys.country}.svg`} className="today__country" alt="PL flag" /> 
-                        <h2 className="today__city">{data.name}</h2>
+                <div className="today__location">
+                    <img src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${data.sys.country}.svg`} className="today__country" alt="PL flag" /> 
+                    <h2 className="today__city">{truncate(data.name, 18)}</h2>
+                </div>
+                <div className="today__timers">
+                    <Time is="sunrise" at={data.sys.sunrise} format={24}/>
+                    <Time is="sunset" at={data.sys.sunset} format={24}/>
+                </div>
+            </div>
+
+            <div className="today__general">
+                <div className="today__main">
+                    <div className="today__illustration">
+                        <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`} alt={data.weather[0].description} />
                     </div>
-                    <div className="today__timers">
-                        <Time is="sunrise" at={data.sys.sunrise} format={24}/>
-                        <Time is="sunset" at={data.sys.sunset} format={24}/>
-                    </div>
-                    <div className="today__main">
-                        <div className="today__illustration">
-                            <img src={`https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`} alt={data.weather[0].description} />
-                        </div>
-                        <div className="today__info-container">
-                            <Temperature temp={data.main.temp} className="today__temperature"/>
-                            <div className="today__info">
-                                <InfoEntry icon={HumidityIcon} 
-                                    info={data.main.humidity + "%"} alt="humidity" />
-                                <InfoEntry icon={BarometerIcon} info={data.main.pressure + "hPa"} alt="atmospheric pressure"/>
-                            </div>
+                    <div className="today__info-container">
+                        <Temperature temp={data.main.temp} className="today__temperature"/>
+                        <div className="today__info">
+                            <InfoEntry icon={HumidityIcon} 
+                                info={data.main.humidity + "%"} alt="humidity" />
+                            <InfoEntry icon={BarometerIcon} info={data.main.pressure + "hPa"} alt="atmospheric pressure"/>
                         </div>
                     </div>
                 </div>
@@ -82,7 +84,7 @@ export const CurrentDayWeather = ({ location }: CurrentDayWeatherProps) => {
                             alt="direction" 
                             info={"North West"}
                         />
-                        <InfoEntry icon={SpeedometerIcon} alt="speed" info={data.wind.speed + " km/h"}/>
+                        <InfoEntry icon={SpeedometerIcon} alt="speed" info={(data.wind.speed * (3600/1000)).toFixed(2) + " km/h"}/>
                     </div>
                 </section>
             </div>
