@@ -11,15 +11,16 @@ interface TempUnitControlProps {
   export const TempUnitControl = ({unit, symbol, checked, onChange}: TempUnitControlProps) => {
     return (
       <>
-        <input 
-        type="radio" 
-        name="temperature" 
-        id={unit}
-        data-unit={unit} 
-        checked={checked}
-        onChange={onChange}
-        />
-        <label aria-label={unit} htmlFor={unit} >°{symbol}</label>
+        <label aria-label={unit} htmlFor={unit} className={checked ? "checked" : ""}>°{symbol}
+          <input 
+          type="radio" 
+          name="temperature" 
+          id={unit}
+          data-unit={unit} 
+          checked={checked}
+          onChange={onChange}
+          />
+        </label>
       </>
     )
   }

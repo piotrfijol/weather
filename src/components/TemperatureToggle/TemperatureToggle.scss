@@ -12,10 +12,18 @@
     }
 
     form input[type="radio"] {
-        display: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 1px; 
+        height: 1px; 
+        overflow: hidden;
+        border: none;
+        background: transparent;
     }
-
+    
     form label {
+        position: relative;
         font-size: 1.3rem;
         margin: 0 .15em;
     }
@@ -24,7 +32,14 @@
         cursor: pointer;
     }
 
-    form input:checked + label {
+    .checked {
         font-weight: 800;
+    }
+
+    fieldset {
+        legend {
+            font-size: 0.8rem;
+        }
+        border: 0;
     }
 }
