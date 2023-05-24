@@ -1,0 +1,61 @@
+
+.upcoming-days {
+    margin-top: 4rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 2rem 2rem 1rem 1.5rem;
+    border-radius: 36px;
+    width: auto;
+
+    table {
+        
+        border-collapse: collapse;
+    }
+
+    thead {
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        left: -10000px;
+        overflow: hidden;
+        clip: rect(1px 1px 1px 1px);
+    }
+
+    h2 {
+        margin: 0;  
+        margin-bottom: 1.5rem;
+    }
+
+    &__row {
+        padding: .5rem 0;
+        border-bottom: 1px solid #181342;
+    }
+
+    &__row:last-child {
+        border-bottom: none;
+    }
+
+    &__date {
+        width: 60%;
+    }
+
+    &__image {
+        width: 25%;
+        height: 50px;
+        overflow: hidden;
+
+        img {
+            transform: scale(0.9);
+        }
+    } 
+
+    &__temperature {
+        width: 10%;
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 360px) {
+    .upcoming-days {
+        padding-left: 4rem;
+    }
+}
