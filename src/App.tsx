@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CurrentDayWeather } from './components/CurrentDayWeather';
 import { Searchbar } from './components/Searchbar';
 import { TemperatureToggle } from './components/TemperatureToggle';
+import { UpcomingDaysWeather } from "./components/UpcomingDaysWeather";
 import { TemperatureSymbols, TemperatureUnits, TemperatureUnitsInfo } from "./types/temperature";
 import { TemperatureProvider, defaultTempUnitsInfo } from "./react-context/TemperatureContext";
 import './App.css';
@@ -27,6 +28,7 @@ function App() {
         <TemperatureToggle selectedUnit={temperatureUnits.unit} onToggle={handleTempToggle}/>
         <TemperatureProvider value={temperatureUnits}>
           <CurrentDayWeather />
+          <UpcomingDaysWeather />
         </TemperatureProvider>
     </div>
   )
