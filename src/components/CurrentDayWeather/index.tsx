@@ -19,10 +19,11 @@ interface CurrentDayWeatherProps {
 }
 
 export const CurrentDayWeather = ({ location }: CurrentDayWeatherProps) => {
-    const {isLoading, isError, error, data} = useQuery({queryKey: ['current-day', location], queryFn: () => fetchWeather(location, "weather")})
+    const {isLoading, status, error, data} = useQuery({queryKey: ['current-day', location], queryFn: () => fetchWeather(location, "weather")})
 
-    if(isError && error) {
-        <span>{error.message}</span>
+    if(status === "error") {
+        if(error instanceof Error) 
+            return <div style={{textAlign: "center"}}>{(error as Error).message}</div>
     }
 
     return (

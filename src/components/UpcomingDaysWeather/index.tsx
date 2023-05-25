@@ -11,14 +11,16 @@ interface UpcomingDaysWeatherProps {
 }
 
 export const UpcomingDaysWeather = ({ location }: UpcomingDaysWeatherProps) => {
-  const {isError, isLoading, error, data} = useQuery({
+  const {status, isLoading, error, data} = useQuery({
     queryKey: ['upcoming-days', location],
     queryFn: () => fetchWeather(location, "upcoming-weather")
   });
 
-  if(isError && error) {
-    <span>{error.message}</span>
+  if(status === "error") {
+    if(error instanceof Error) 
+        return <div style={{textAlign: "center"}}>{(error as Error).message}</div>
   }
+
 
   return (
     <section className="upcoming-days">
