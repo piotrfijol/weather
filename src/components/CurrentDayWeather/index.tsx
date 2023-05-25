@@ -9,7 +9,7 @@ import SpeedometerIcon from "@assets/Speedometer.svg";
 import DirectionIcon from "@assets/direction.svg";
 import WindIcon from "@assets/wind.svg";
 import "./CurrentDayWeather.scss";
-import { truncate } from "../../utils/helper";
+import { degToDirection, truncate } from "../../utils/helper";
 
 const fetchTodayWeather = async (location: SearchLocation) => {
     let response;
@@ -82,7 +82,7 @@ export const CurrentDayWeather = ({ location }: CurrentDayWeatherProps) => {
                         <InfoEntry 
                             icon={<img src={DirectionIcon} alt="direction" style={{transform: `rotate(${data.wind.deg}deg)`}}/>} 
                             alt="direction" 
-                            info={"North West"}
+                            info={degToDirection(data.wind.deg)}
                         />
                         <InfoEntry icon={SpeedometerIcon} alt="speed" info={(data.wind.speed * (3600/1000)).toFixed(2) + " km/h"}/>
                     </div>
