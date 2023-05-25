@@ -6,7 +6,7 @@ type TimeFormat = 12 | 24;
 
 interface TimeProps {
     is: "sunrise" | "sunset",
-    at: EpochTimeStamp,
+    at: number,
     format: TimeFormat
 };
 
@@ -14,7 +14,7 @@ export const Time = ({is, at, format}: TimeProps) => {
 
   
   const formatTime = () => {
-    let d = new Date(at * 1000);
+    let d = new Date(at);
     return d.toLocaleString("en-US", {minute: "numeric", hour: "numeric", hour12: (format === 12)})
   }; 
   

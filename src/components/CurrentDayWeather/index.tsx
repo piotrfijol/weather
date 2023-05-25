@@ -55,8 +55,8 @@ export const CurrentDayWeather = ({ location }: CurrentDayWeatherProps) => {
                     <h2 className="today__city">{truncate(data.name, 18)}</h2>
                 </div>
                 <div className="today__timers">
-                    <Time is="sunrise" at={data.sys.sunrise} format={24}/>
-                    <Time is="sunset" at={data.sys.sunset} format={24}/>
+                    <Time is="sunrise" at={(data.sys.sunrise + data.timezone) * 1000} format={24}/>
+                    <Time is="sunset" at={(data.sys.sunset + data.timezone) * 1000} format={24}/>
                 </div>
             </div>
 
