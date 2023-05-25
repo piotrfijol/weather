@@ -34,7 +34,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <TemperatureProvider value={temperatureUnits}>
             <CurrentDayWeather location={location}/>
-            <UpcomingDaysWeather />
+            <UpcomingDaysWeather location={location}/>
           </TemperatureProvider>
         </QueryClientProvider>
     </div>
