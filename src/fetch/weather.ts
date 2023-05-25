@@ -1,8 +1,9 @@
 import { SearchLocation } from "../types/location";
+import config from "../config";
 
 export const fetchWeather = async (location: SearchLocation, endpoint: string) => {
     let response;
-    let url = new URL("https://weatherapp-server.melaryk.repl.co/api/" + endpoint);
+    let url = new URL(import.meta.env.VITE_API_BASEURL || config.API_BASEURL + endpoint);
     if(typeof location === "string") {
         url.searchParams.set("q", location);
     } else if (location instanceof GeolocationPosition) {
