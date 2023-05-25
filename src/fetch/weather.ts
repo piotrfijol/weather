@@ -18,5 +18,12 @@ export const fetchWeather = async (location: SearchLocation, endpoint: string) =
         throw new Error("There was a network problem when requesting weather data.");
     }
   
-    return await response.json();
+    let jsonData = await response.json();
+
+    console.log(jsonData)
+    if(jsonData.cod != '200') {
+        throw new Error(`Error${jsonData.cod} - ${jsonData.message}`);
+    }
+
+    return jsonData?.data;
   };
