@@ -7,7 +7,7 @@ interface TemperatureToggleProps {
     onToggle: (unit: TemperatureUnits) => void
 }
 
-export const TemperatureToggle = ({selectedUnit = "celsius", onToggle}: TemperatureToggleProps) => {
+export const TemperatureToggle = ({selectedUnit, onToggle}: TemperatureToggleProps) => {
 
   const handleChange = (ev: React.ChangeEvent<HTMLInputElement> ) => {
     const target = ev.currentTarget;
