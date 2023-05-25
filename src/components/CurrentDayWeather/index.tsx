@@ -10,34 +10,14 @@ import DirectionIcon from "@assets/direction.svg";
 import WindIcon from "@assets/wind.svg";
 import "./CurrentDayWeather.scss";
 import { degToDirection, truncate } from "../../utils/helper";
-
-const fetchTodayWeather = async (location: SearchLocation) => {
-    let response;
-    let url = new URL("https://weatherapp-server.melaryk.repl.co/api/weather");
-    if(typeof location === "string") {
-        url.searchParams.set("q", location);
-    } else if (location instanceof GeolocationPosition) {
-        url.searchParams.set("lon", location.coords.longitude.toString());
-        url.searchParams.set("lat", location.coords.latitude.toString());
-    } else {
-        throw new Error("Unsupported location type.");
-    }
-
-    response = await fetch(url);
-
-    if(!response?.ok) {
-        throw new Error("There was a network problem when requesting weather data.");
-    }
-
-    return await response.json();
-};
+import { fetchWeather } from "../../fetch/weather";
 
 interface CurrentDayWeatherProps {
     location: SearchLocation
 }
 
 export const CurrentDayWeather = ({ location }: CurrentDayWeatherProps) => {
-    const {isLoading, isError, error, data} = useQuery({queryKey: ['current-day', location], queryFn: () => fetchTodayWeather(location)})
+    const {isLoading, isError, error, data} = useQuery({queryKey: ['current-day', location], queryFn: () => fetchWeather(location, "weather")})
 
     if(isLoading) {
         return <span>Loading</span>
