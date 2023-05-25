@@ -8,6 +8,7 @@ import { SearchLocation } from "./types/location";
 import { TemperatureProvider, defaultTempUnitsInfo } from "./react-context/TemperatureContext";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import './App.css';
+import { SkeletonTheme } from "react-loading-skeleton";
 
 const queryClient = new QueryClient();
 
@@ -31,12 +32,14 @@ function App() {
     <div className="container">
         <Searchbar onLocationChange={(location) => setLocation(location)}/>
         <TemperatureToggle selectedUnit={temperatureUnits.unit} onToggle={handleTempToggle}/>
-        <QueryClientProvider client={queryClient}>
-          <TemperatureProvider value={temperatureUnits}>
-            <CurrentDayWeather location={location}/>
-            <UpcomingDaysWeather location={location}/>
-          </TemperatureProvider>
-        </QueryClientProvider>
+        <SkeletonTheme baseColor="#0f0928" highlightColor="#010040">
+          <QueryClientProvider client={queryClient}>
+            <TemperatureProvider value={temperatureUnits}>
+              <CurrentDayWeather location={location}/>
+              <UpcomingDaysWeather location={location}/>
+            </TemperatureProvider>
+          </QueryClientProvider>
+        </SkeletonTheme>
     </div>
   )
 }
