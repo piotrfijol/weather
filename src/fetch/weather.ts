@@ -20,7 +20,6 @@ export const fetchWeather = async (location: SearchLocation, endpoint: string) =
   
     let jsonData = await response.json();
 
-    console.log(jsonData)
     if(jsonData.cod != '200') {
         throw new Error(`Error${jsonData.cod} - ${jsonData.message}`);
     }
