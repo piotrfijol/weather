@@ -42,3 +42,13 @@ body {
   .w-auto {
     width: auto;
   }
+
+  footer {
+    margin-top: 5rem;
+    font-size: .7rem;
+    text-align: center;
+  }
+
+  footer a {
+      color: #8258c7;
+  }

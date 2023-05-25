@@ -40,6 +40,9 @@ function App() {
             </TemperatureProvider>
           </QueryClientProvider>
         </SkeletonTheme>
+        <footer>
+          Design & Code made by <a href="https://github.com/piotrfijol">Piotr Fijoł</a><br />Powered by <a href="https://openweathermap.org/">OpenWeatherMap</a>
+        </footer>
     </div>
   )
 }
