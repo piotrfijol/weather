@@ -1,0 +1,9 @@
+<!-- Images comes from svgrepo.com. It's been distributed under CC Attribution License (https://creativecommons.org/licenses/by/3.0/) 
+The svg got optimized using svgomg.net tool -->
+
+<svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="800" height="800" viewBox="0 0 64 64" xml:space="preserve">
+	<g fill-rule="evenodd" clip-rule="evenodd">
+		<path fill="#f0f8ff" d="M56 33v-1a24 24 0 1 0-48 0v1a12 12 0 0 0 4 23h40a12 12 0 0 0 4-23zm-4 15H12a4 4 0 0 1 0-8h4v-8a16 16 0 1 1 32 0v8h4a4 4 0 1 1 0 8z"/>
+		<path fill="#45AAB8" d="M52 48H12a4 4 0 0 1 0-8h4v-8a16 16 0 1 1 32 0v8h4a4 4 0 1 1 0 8z"/>
+	</g>
+</svg>
