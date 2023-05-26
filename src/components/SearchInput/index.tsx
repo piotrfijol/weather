@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { NavigationIcon } from "../icons/NavigationIcon";
 import "./SearchInput.scss";
+import { Autocomplete } from "../Autocomplete";
 
 interface SearchInputProps {
   onChange: (ev: React.ChangeEvent<HTMLInputElement>) => void,
@@ -53,6 +54,7 @@ export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) 
         value={value}
         className="search-container__search"
       />
+      <Autocomplete className={"search-container__autocomplete"} />
       <button className="navigate" type="button" onClick={getLocation} title="Click to check weather for your location">
         <NavigationIcon />
       </button>
