@@ -12,8 +12,10 @@ export const Searchbar = ({ onLocationChange }: SearchbarProps) => {
 
     const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setLocation(search);
-        setSearch("");
+        if(search !== '') {
+            setLocation(search);
+            setSearch("");
+        }
     }
 
     const handleOnLocation = (position: GeolocationPosition) => {
