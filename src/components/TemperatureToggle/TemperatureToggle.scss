@@ -6,7 +6,6 @@
     &__delimiter {
         height: 1rem;
         width: 1px;
-        margin: 0 .8rem;
         background-color: #FFF;
         display: inline-block;
     }
@@ -25,7 +24,8 @@
     form label {
         position: relative;
         font-size: 1.3rem;
-        margin: 0 .15em;
+        margin: 0;
+        padding: 1rem;
     }
 
     form label:hover {
