@@ -13,10 +13,10 @@ export const fetchWeather = async (location: SearchLocation, endpoint: string) =
     } else {
         throw new Error("Unsupported location type.");
     }
-  
+
     response = await fetch(url);
-  
-    if(!response?.ok) {
+    
+    if(!response.ok) {
         throw new Error("The network problem occured during requesting weather data.");
     }
   
