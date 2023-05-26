@@ -14,8 +14,8 @@
         position: absolute;
         left: 50%;
         top: 50%;
-        width: 1px; 
-        height: 1px; 
+        width: 1px;
+        height: 1px;
         overflow: hidden;
         border: none;
         background: transparent;
@@ -34,6 +34,7 @@
 
     .checked {
         font-weight: 800;
+        color: #FFF;
     }
 
     fieldset {
