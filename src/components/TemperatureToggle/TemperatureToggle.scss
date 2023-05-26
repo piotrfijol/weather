@@ -17,6 +17,8 @@
         width: 1px;
         height: 1px;
         overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        clip-path: polygon(0 0, 0 0, 0 0, 0 0);
         border: none;
         background: transparent;
     }
@@ -40,6 +42,7 @@
     fieldset {
         legend {
             font-size: 0.8rem;
+            margin: auto;
         }
         border: 0;
     }
