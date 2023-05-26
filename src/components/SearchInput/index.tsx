@@ -41,7 +41,7 @@ export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) 
         </div>)
         : null
       }
-
+      <button type="submit" className="search-container__submit">Search</button>
       <label className="sr-only" htmlFor="search-city">Enter the name of the city</label>
       <input 
         placeholder="London"
@@ -51,6 +51,7 @@ export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) 
         id="search-city"
         onInput={onChange} 
         value={value}
+        className="search-container__search"
       />
       <button className="navigate" type="button" onClick={getLocation} title="Click to check weather for your location">
         <NavigationIcon />
