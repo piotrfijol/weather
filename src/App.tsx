@@ -30,16 +30,16 @@ function App() {
 
   return (
     <div className="container">
+      <QueryClientProvider client={queryClient}>
         <Searchbar onLocationChange={(location) => setLocation(location)}/>
         <TemperatureToggle selectedUnit={temperatureUnits.unit} onToggle={handleTempToggle}/>
         <SkeletonTheme baseColor="#0f0928" highlightColor="#010040">
-          <QueryClientProvider client={queryClient}>
             <TemperatureProvider value={temperatureUnits}>
               <CurrentDayWeather location={location}/>
               <UpcomingDaysWeather location={location}/>
             </TemperatureProvider>
-          </QueryClientProvider>
         </SkeletonTheme>
+      </QueryClientProvider>
         <footer>
           Design & Code made by <a href="https://github.com/piotrfijol">Piotr Fijoł</a><br />Powered by <a href="https://openweathermap.org/">OpenWeatherMap</a>
         </footer>
