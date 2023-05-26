@@ -13,7 +13,7 @@ export const Searchbar = ({ onLocationChange }: SearchbarProps) => {
     const [search, setSearch] = useState<string>('');
     const { isLoading, error, data, refetch } = useQuery({
         queryKey: ['city-autocompletion', search],
-        queryFn: () => { fetchAutocompletion(search) },
+        queryFn: () => fetchAutocompletion(search),
         enabled: false
     });
     const [location, setLocation] = useState<SearchLocation>("Warsaw");

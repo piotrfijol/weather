@@ -18,8 +18,9 @@ export const fetchAutocompletion = async (location: string) => {
         return [];
     }
 
-    if(jsonData.statusCode != 200) {
+    if(jsonData.hasOwnProperty('statusCode') && jsonData.statusCode != 200) {
         throw new Error(`Error${jsonData.statusCode} - ${jsonData.message}`);
     }
+
     return jsonData;
 };
