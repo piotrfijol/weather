@@ -17,7 +17,7 @@ export const fetchWeather = async (location: SearchLocation, endpoint: string) =
     response = await fetch(url);
   
     if(!response?.ok) {
-        throw new Error("There was a network problem when requesting weather data.");
+        throw new Error("The network problem occured during requesting weather data.");
     }
   
     let jsonData = await response.json();
