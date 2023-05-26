@@ -12,8 +12,10 @@ export const Searchbar = ({ onLocationChange }: SearchbarProps) => {
 
     const handleOnSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if(search !== '') {
-            setLocation(search);
+        let searchTrimmed = search.trim();
+        
+        if(searchTrimmed !== '') {
+            setLocation(searchTrimmed);
             setSearch("");
         }
     }
