@@ -20,7 +20,7 @@ export const Autocomplete = ({className = "", data = [], onAutocomplete}: Autoco
                 <div 
                     className="autocomplete__suggestion" 
                     key={suggestion.id} 
-                    onClick={(e) => {handleSelect(suggestion)}}
+                    onClick={() => {handleSelect(suggestion)}}
                 >
                     <span className="autocomplete__city">{suggestion.city}</span>
                     <span className="autocomplete__location-details">{suggestion.country} {suggestion.state}</span>
