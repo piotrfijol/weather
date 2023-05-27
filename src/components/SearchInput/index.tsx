@@ -8,8 +8,8 @@ interface SearchInputProps {
   onChange: (ev: React.ChangeEvent<HTMLInputElement>) => void,
   onLocation: (position : GeolocationPosition) => void,
   value: string,
-  autocomplete: AutcompleteSuggestion[],
-  onAutocomplete: (selected: AutcompleteSuggestion) => void
+  autocomplete?: AutcompleteSuggestion[],
+  onAutocomplete?: (selected: AutcompleteSuggestion) => void
 }
 
 export const SearchInput = ({ onLocation, onChange, value, autocomplete, onAutocomplete } : SearchInputProps) => {
@@ -71,11 +71,15 @@ export const SearchInput = ({ onLocation, onChange, value, autocomplete, onAutoc
         onFocus={showAutocomplete}
         onBlur={hideAutocomplete}
       />
-      <Autocomplete 
-        onAutocomplete={(selected) => {onAutocomplete(selected); setIsAutocomplete(false)}} 
-        className={"search-container__autocomplete " + (isAutocomplete ? "show" : "")} 
-        data={autocomplete}
-      />
+      { autocomplete && onAutocomplete
+        ? (
+          <Autocomplete 
+            onAutocomplete={(selected) => {onAutocomplete(selected); setIsAutocomplete(false)}} 
+            className={"search-container__autocomplete " + (isAutocomplete ? "show" : "")} 
+            data={autocomplete}
+          />
+        ) : null
+      }
       <button className="navigate" type="button" onClick={getLocation} title="Click to check weather for your location">
         <NavigationIcon />
       </button>
