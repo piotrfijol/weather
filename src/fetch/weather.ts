@@ -7,17 +7,17 @@ export const fetchWeather = async (location: SearchLocation, endpoint: string) =
     let url = new URL(BASE + endpoint);
     if(typeof location === "string") {
         url.searchParams.set("q", location);
-    } else if (location instanceof GeolocationPosition) {
+    } else if ("coords" in location) {
         url.searchParams.set("lon", location.coords.longitude.toString());
         url.searchParams.set("lat", location.coords.latitude.toString());
     } else {
         throw new Error("Unsupported location type.");
     }
-  
+
     response = await fetch(url);
-  
-    if(!response?.ok) {
-        throw new Error("There was a network problem when requesting weather data.");
+    
+    if(!response.ok) {
+        throw new Error("The network problem occured during requesting weather data.");
     }
   
     let jsonData = await response.json();

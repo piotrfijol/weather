@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
 import { NavigationIcon } from "../icons/NavigationIcon";
 import "./SearchInput.scss";
+import { Autocomplete } from "../Autocomplete";
+import { AutcompleteSuggestion } from "../../types/location";
 
 interface SearchInputProps {
   onChange: (ev: React.ChangeEvent<HTMLInputElement>) => void,
   onLocation: (position : GeolocationPosition) => void,
-  value: string
+  value: string,
+  autocomplete: AutcompleteSuggestion[],
+  onAutocomplete: (selected: AutcompleteSuggestion) => void
 }
 
-export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) => {
+export const SearchInput = ({ onLocation, onChange, value, autocomplete, onAutocomplete } : SearchInputProps) => {
   const [error, setError] = useState("");
+  const [isAutocomplete, setIsAutocomplete] = useState(false);
 
   const getLocation = () => {
     if("geolocation" in navigator) {
@@ -32,6 +37,17 @@ export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) 
     }
   }, [error]);
 
+  const showAutocomplete = () => {
+    setIsAutocomplete(true);
+  };
+
+  const hideAutocomplete = (e: React.FocusEvent<HTMLInputElement>) => {
+
+    if(!e.relatedTarget?.classList.contains("autocomplete")) {
+      setIsAutocomplete(false);
+    }
+  };
+
   return (
     <div className="search-container">
       {error !== ""? (
@@ -41,7 +57,7 @@ export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) 
         </div>)
         : null
       }
-
+      <button type="submit" className="search-container__submit">Search</button>
       <label className="sr-only" htmlFor="search-city">Enter the name of the city</label>
       <input 
         placeholder="London"
@@ -51,6 +67,14 @@ export const SearchInput = ({ onLocation, onChange, value } : SearchInputProps) 
         id="search-city"
         onInput={onChange} 
         value={value}
+        className="search-container__search"
+        onFocus={showAutocomplete}
+        onBlur={hideAutocomplete}
+      />
+      <Autocomplete 
+        onAutocomplete={(selected) => {onAutocomplete(selected); setIsAutocomplete(false)}} 
+        className={"search-container__autocomplete " + (isAutocomplete ? "show" : "")} 
+        data={autocomplete}
       />
       <button className="navigate" type="button" onClick={getLocation} title="Click to check weather for your location">
         <NavigationIcon />
