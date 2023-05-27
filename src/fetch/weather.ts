@@ -7,7 +7,7 @@ export const fetchWeather = async (location: SearchLocation, endpoint: string) =
     let url = new URL(BASE + endpoint);
     if(typeof location === "string") {
         url.searchParams.set("q", location);
-    } else if (location instanceof GeolocationPosition) {
+    } else if ("coords" in location) {
         url.searchParams.set("lon", location.coords.longitude.toString());
         url.searchParams.set("lat", location.coords.latitude.toString());
     } else {
