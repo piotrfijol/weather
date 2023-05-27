@@ -125,12 +125,16 @@
     }
 
     &__autocomplete {
+        display: none;
         position: absolute;
         top: calc(100% + 3px);
         left: 0;
         z-index: 9999;
     }
-
+    
+    &__autocomplete.show {
+        display: block;
+    }
 }
 
 @media (min-width: 600px) {
@@ -150,22 +154,3 @@
         }
     }
 }
-
-/*
-
-    &__submit {
-        padding:  .5rem 1rem;
-        position:  absolute;
-        right: -6rem;
-        border: none;
-        border-radius:  3px;
-        color: #FFF;
-        background: #3d259e;
-        font-family: 'Poppins';
-    }
-    
-    &__submit:hover {
-        cursor: pointer;
-        background: #312171;
-    }
-*/
