@@ -10,22 +10,18 @@ interface TemperatureProps {
 
 export const Temperature = ({temp = 0, className=""}: TemperatureProps) => {
   const {unit, defaultUnit, symbol} = useTempUnit();
-  const [temperature, setTemperature] = useState<number>(0);
 
-
-    useEffect(() => {
-      if(defaultUnit === unit) {
-        setTemperature(Math.round(temp));
-      } else if(unit === "fahrenheit") {
-        setTemperature(Math.round(toFahrenheit(temp))); 
-      }
-
-    }, [unit])
+  function convertTemperature() {
+    if(defaultUnit === unit) {
+      return Math.round(temp);
+    } else if(unit === "fahrenheit") {
+      return Math.round(toFahrenheit(temp)); 
+    }
+  }
     
-
   return (
     <div className={`temperature ${className}`}>
-      <span className="temperature__value">{temperature}<sup className="temperature__symbol">&deg;{symbol}</sup></span>
+      <span className="temperature__value">{convertTemperature()}<sup className="temperature__symbol">&deg;{symbol}</sup></span>
     </div>
   )
 }
